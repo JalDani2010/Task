@@ -6,8 +6,8 @@ const connectDB = require("./db/connect");
 require("dotenv").config();
 
 // middleware for logging and getting the data in req.body
+app.use(express.static('./public'));
 app.use(express.json());
-
 
 const start = async () => {
   try {
@@ -19,10 +19,9 @@ const start = async () => {
     console.log(error);
   }
 };
-app.get("/hello", (req, res) => {
-  res.send("Task manager app");
-});
+
 
 app.use("/api/v1/tasks", tasks);
+
 
 start();
